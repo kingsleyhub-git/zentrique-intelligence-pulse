@@ -4,6 +4,8 @@ import { num } from "@/lib/pulse/format";
 import { cn } from "@/lib/utils";
 import { Card, CardTitle, SelectField } from "./ui";
 
+const plural = (n: number, word: string) => `${num(n)} ${word}${n === 1 ? "" : "s"}`;
+
 export function MappingPanel({
   headers,
   mapping,
@@ -23,22 +25,22 @@ export function MappingPanel({
         { ok: true, text: `${num(report.totalRows)} rows scanned`, sub: `${num(report.validRows)} ready for analysis` },
         {
           ok: report.duplicatesRemoved === 0,
-          text: `${num(report.duplicatesRemoved)} duplicate rows`,
+          text: plural(report.duplicatesRemoved, "duplicate row"),
           sub: report.duplicatesRemoved ? "Removed automatically" : "None found",
         },
         {
           ok: report.missingDate === 0,
-          text: `${num(report.missingDate)} rows with a missing or unreadable date`,
+          text: `${plural(report.missingDate, "row")} with a missing or unreadable date`,
           sub: report.missingDate ? "Excluded from analysis" : "All dates readable",
         },
         {
           ok: report.invalidRevenue === 0,
-          text: `${num(report.invalidRevenue)} rows with no valid amount`,
+          text: `${plural(report.invalidRevenue, "row")} with no valid amount`,
           sub: report.invalidRevenue ? "Excluded from analysis" : "All amounts readable",
         },
         {
           ok: report.filledLabels === 0,
-          text: `${num(report.filledLabels)} blank labels`,
+          text: plural(report.filledLabels, "blank label"),
           sub: report.filledLabels ? "Grouped as “Unspecified”" : "All labels present",
         },
       ]

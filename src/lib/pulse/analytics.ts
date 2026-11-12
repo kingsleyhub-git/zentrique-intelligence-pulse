@@ -285,7 +285,7 @@ export function cleanData(rows: RawRow[], mapping: ColumnMapping) {
     report.monthsCovered = new Set(months).size;
   }
   const considered = report.totalRows - report.emptyRows - report.duplicatesRemoved;
-  report.qualityScore = considered > 0 ? Math.round((report.validRows / considered) * 100) : 0;
+  report.qualityScore = considered > 0 ? Math.floor((report.validRows / considered) * 100) : 0;
   return { records, report };
 }
 
