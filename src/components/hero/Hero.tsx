@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { ArrowRight, BadgeCheck, Check, Eye, Lock, Play, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { NetworkCanvas } from "./NetworkCanvas";
@@ -64,13 +65,17 @@ export function Hero() {
             className="animate-fade-up mt-9 flex flex-col gap-3 sm:flex-row"
             style={{ animationDelay: "0.45s" }}
           >
-            <Button variant="hero" size="xl" className="group">
-              Book A Consultation
-              <ArrowRight className="transition-transform group-hover:translate-x-1" />
+            <Button asChild variant="hero" size="xl" className="group">
+              <Link to="/contact" search={{ intent: "consultation" }}>
+                Book A Consultation
+                <ArrowRight className="transition-transform group-hover:translate-x-1" />
+              </Link>
             </Button>
-            <Button variant="heroOutline" size="xl">
-              <Play className="fill-current text-brand-teal" />
-              Explore ZENTRIQUE PULSE
+            <Button asChild variant="heroOutline" size="xl">
+              <Link to="/pulse">
+                <Play className="fill-current text-brand-teal" />
+                Explore ZENTRIQUE PULSE
+              </Link>
             </Button>
           </div>
 

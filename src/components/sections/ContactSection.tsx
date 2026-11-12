@@ -178,7 +178,7 @@ export function ContactSection({ initialIntent }: { initialIntent?: ContactInten
         </Reveal>
 
         <Reveal delay={120}>
-          <div className="rounded-3xl border border-border bg-card p-6 shadow-[0_30px_60px_-30px_oklch(0.2_0.04_262/0.25)] sm:p-10">
+          <div className="rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-soft)] sm:p-10">
             {sent ? (
               <div role="status" className="flex min-h-[28rem] flex-col items-center justify-center text-center">
                 <span className="flex size-16 items-center justify-center rounded-full bg-success/15 text-success">
