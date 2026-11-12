@@ -20,13 +20,6 @@ const TOTAL = actual.length + forecast.length - 1;
 const actualPath = toPath(actual, 0, TOTAL, W, H);
 const forecastPath = toPath(forecast, actual.length - 1, TOTAL, W, H);
 const bandUpper = toPath(forecast.map((v, i) => v + i * 2.5), actual.length - 1, TOTAL, W, H);
-const bandLower = toPath(
-  forecast.map((v, i) => v - i * 2.5).reverse(),
-  actual.length - 1,
-  TOTAL,
-  W,
-  H,
-);
 // reverse x for the lower edge so the polygon closes cleanly
 const lowerPts = forecast
   .map((v, i) => v - i * 2.5)
@@ -37,7 +30,6 @@ const lowerPts = forecast
   })
   .reverse()
   .join(" L");
-void bandLower;
 const bandPath = `${bandUpper} L${lowerPts} Z`;
 const areaPath = `${actualPath} L${(((actual.length - 1) / (TOTAL - 1)) * W).toFixed(1)},${H} L0,${H} Z`;
 
