@@ -57,6 +57,12 @@ export function PulseShowcase() {
           <div ref={dashRef} className="scroll-mt-28">
             <PulseDashboard view={view} onViewChange={setView} />
           </div>
+          <p className="mt-4 text-center text-sm text-hero-muted">
+            Preview shown with sample figures.{" "}
+            <Link to="/pulse/workspace" className="font-semibold text-brand-teal underline-offset-4 hover:underline">
+              Open the live workspace and analyse your own data →
+            </Link>
+          </p>
         </Reveal>
 
         {/* Product screenshots: each card opens that screen in the live preview above */}
