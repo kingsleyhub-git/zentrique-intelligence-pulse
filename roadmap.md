@@ -11,3 +11,4 @@
 - [x] Contact section: form (Name, Email, Company, Phone, Message), Schedule Consultation + Request Demo, email, office, socials — submissions saved
 - [x] Production readiness: every button/link works, nav, footer, SEO, accessibility, mobile, form end-to-end
 - [ ] Waiting on user: real business email, office address, social media links
+- [ ] Functional PULSE Workspace: real CSV/Excel upload, column mapping, validation, KPIs, charts, forecasting, AI strategic insights, Excel/CSV/PDF reports
