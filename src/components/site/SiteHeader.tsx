@@ -23,18 +23,25 @@ export function SiteHeader() {
 
   useEffect(() => {
     if (!open) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener("keydown", onKey);
+    };
   }, [open]);
 
   return (
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-500",
-        scrolled || open
-          ? "border-b border-hero-line bg-navy/90 shadow-lg backdrop-blur-xl"
-          : "bg-transparent",
+        open
+          ? "border-b border-hero-line bg-navy-deep shadow-lg"
+          : scrolled
+            ? "border-b border-hero-line bg-navy/90 shadow-lg backdrop-blur-xl"
+            : "bg-transparent",
       )}
     >
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-6 px-6 lg:px-8">
