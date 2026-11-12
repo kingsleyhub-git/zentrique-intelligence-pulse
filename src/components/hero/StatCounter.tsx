@@ -17,7 +17,7 @@ export function StatCounter({ value, suffix = "", label, duration = 1800 }: Prop
     let raf = 0;
     const io = new IntersectionObserver(
       ([entry]) => {
-        if (!entry.isIntersecting) return;
+        if (!entry?.isIntersecting) return;
         io.disconnect();
         const start = performance.now();
         const tick = (now: number) => {

@@ -54,7 +54,7 @@ export function NetworkCanvas({ className }: { className?: string }) {
       let bestD = LINK;
       for (let i = 0; i < nodes.length; i++) {
         if (i === a) continue;
-        const d = Math.hypot(nodes[i].x - nodes[a].x, nodes[i].y - nodes[a].y);
+        const d = Math.hypot(nodes[i]!.x - nodes[a]!.x, nodes[i]!.y - nodes[a]!.y);
         if (d < bestD && Math.random() > 0.3) {
           bestD = d;
           best = i;
@@ -77,8 +77,8 @@ export function NetworkCanvas({ className }: { className?: string }) {
 
       for (let i = 0; i < nodes.length; i++) {
         for (let j = i + 1; j < nodes.length; j++) {
-          const a = nodes[i];
-          const b = nodes[j];
+          const a = nodes[i]!;
+          const b = nodes[j]!;
           const d = Math.hypot(a.x - b.x, a.y - b.y);
           if (d < LINK) {
             const near = Math.hypot((a.x + b.x) / 2 - mouse.x, (a.y + b.y) / 2 - mouse.y) < 160;
@@ -114,6 +114,7 @@ export function NetworkCanvas({ className }: { className?: string }) {
           p.t += p.speed;
           const a = nodes[p.a];
           const b = nodes[p.b];
+          if (!a || !b) continue;
           const x = a.x + (b.x - a.x) * p.t;
           const y = a.y + (b.y - a.y) * p.t;
           ctx.globalAlpha = 1;

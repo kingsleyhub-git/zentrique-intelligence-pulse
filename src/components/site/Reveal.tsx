@@ -8,7 +8,7 @@ export function Reveal({
   delay = 0,
 }: {
   children: ReactNode;
-  className?: string;
+  className?: string | undefined;
   delay?: number;
 }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -19,7 +19,7 @@ export function Reveal({
     if (!el) return;
     const io = new IntersectionObserver(
       ([e]) => {
-        if (e.isIntersecting) {
+        if (e?.isIntersecting) {
           setShown(true);
           io.disconnect();
         }
