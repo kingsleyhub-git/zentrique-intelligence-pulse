@@ -1,9 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 
-type Props = { value: number; suffix?: string; label: string; duration?: number };
+type Props = {
+  value: number;
+  suffix?: string;
+  label: string;
+  duration?: number;
+  size?: "md" | "lg";
+};
 
 /** Counts up from 0 to `value` once the stat scrolls into view. */
-export function StatCounter({ value, suffix = "", label, duration = 1800 }: Props) {
+export function StatCounter({ value, suffix = "", label, duration = 1800, size = "md" }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const [display, setDisplay] = useState(0);
 
@@ -39,7 +45,13 @@ export function StatCounter({ value, suffix = "", label, duration = 1800 }: Prop
 
   return (
     <div ref={ref} className="flex flex-col gap-1">
-      <span className="font-display text-3xl font-bold tabular-nums text-hero-foreground sm:text-4xl">
+      <span
+        className={
+          size === "lg"
+            ? "font-display text-5xl font-bold tabular-nums text-hero-foreground sm:text-6xl"
+            : "font-display text-3xl font-bold tabular-nums text-hero-foreground sm:text-4xl"
+        }
+      >
         {display}
         <span className="text-brand-teal">{suffix}</span>
       </span>
