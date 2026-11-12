@@ -2,12 +2,14 @@ import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 export function SectionHeading({
+  id,
   eyebrow,
   title,
   children,
   align = "center",
   tone = "dark",
 }: {
+  id?: string | undefined;
   eyebrow: string;
   title: ReactNode;
   children?: ReactNode;
@@ -25,6 +27,7 @@ export function SectionHeading({
         {eyebrow}
       </span>
       <h2
+        id={id}
         className={cn(
           "mt-4 text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl",
           tone === "dark" ? "text-charcoal" : "text-hero-foreground",
