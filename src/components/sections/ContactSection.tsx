@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from "react";
-import { Link } from "@tanstack/react-router";
+import { Link, useHydrated } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import {
   CalendarCheck,
@@ -56,6 +56,8 @@ export function ContactSection({ initialIntent }: { initialIntent?: ContactInten
   const [pending, setPending] = useState<ContactIntent | null>(null);
   const [sent, setSent] = useState<{ intent: ContactIntent; name: string } | null>(null);
   const preferred: ContactIntent = initialIntent ?? "consultation";
+  // Until the page is interactive, block native submission so details never land in the URL.
+  const hydrated = useHydrated();
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -200,7 +202,7 @@ export function ContactSection({ initialIntent }: { initialIntent?: ContactInten
                 </div>
               </div>
             ) : (
-              <form noValidate onSubmit={onSubmit} aria-label="Contact form">
+              <form noValidate method="post" onSubmit={onSubmit} aria-label="Contact form" aria-busy={!hydrated}>
                 <div className="grid gap-5 sm:grid-cols-2">
                   {fields.map((f) => (
                     <div key={f.name} className="space-y-2">
@@ -268,7 +270,7 @@ export function ContactSection({ initialIntent }: { initialIntent?: ContactInten
                     value="consultation"
                     size="xl"
                     variant={preferred === "consultation" ? "hero" : "outline"}
-                    disabled={pending !== null}
+                    disabled={!hydrated || pending !== null}
                     className="flex-1"
                   >
                     {pending === "consultation" ? (
@@ -284,7 +286,7 @@ export function ContactSection({ initialIntent }: { initialIntent?: ContactInten
                     value="demo"
                     size="xl"
                     variant={preferred === "demo" ? "hero" : "outline"}
-                    disabled={pending !== null}
+                    disabled={!hydrated || pending !== null}
                     className="flex-1"
                   >
                     {pending === "demo" ? (
