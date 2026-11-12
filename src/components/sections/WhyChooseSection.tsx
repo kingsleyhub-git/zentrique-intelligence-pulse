@@ -28,29 +28,26 @@ export function WhyChooseSection() {
           </Reveal>
 
           <Reveal delay={120}>
-            <dl className="mt-12 grid grid-cols-3 gap-4 border-t border-hero-line pt-10">
+            <div className="mt-12 grid grid-cols-3 gap-4 border-t border-hero-line pt-10">
               {whyStats.map((s) => (
-                <div key={s.label}>
-                  <dt className="sr-only">{s.label}</dt>
-                  <dd>
-                    <StatCounter value={s.value} suffix={s.suffix} label={s.label} size="lg" />
-                  </dd>
-                </div>
+                <StatCounter key={s.label} value={s.value} suffix={s.suffix} label={s.label} size="lg" />
               ))}
-            </dl>
+            </div>
           </Reveal>
         </div>
 
         <ul className="grid gap-4 sm:grid-cols-2">
           {whyChoose.map((item, i) => (
-            <Reveal key={item} delay={(i % 2) * 80}>
-              <li className="flex h-full items-center gap-4 rounded-xl border border-hero-line bg-glass p-5 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-brand-teal/60">
+            <li key={item}>
+              <Reveal delay={(i % 2) * 80} className="h-full">
+              <div className="flex h-full items-center gap-4 rounded-xl border border-hero-line bg-glass p-5 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-brand-teal/60">
                 <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-brand-teal/20 text-brand-teal">
                   <Check className="size-4" strokeWidth={3} aria-hidden="true" />
                 </span>
                 <span className="font-medium text-hero-foreground">{item}</span>
-              </li>
-            </Reveal>
+              </div>
+              </Reveal>
+            </li>
           ))}
         </ul>
       </div>
