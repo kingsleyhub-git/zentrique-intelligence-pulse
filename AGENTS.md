@@ -32,3 +32,4 @@ use the editor.
 ## Project rules
 - Site chrome (header/footer) lives in `src/routes/__root.tsx`; page sections are reusable components in `src/components/sections` so a section can appear on several pages without duplication.
 - Brand colours, gradients and card styles are tokens/utilities in `src/styles.css`; components only use those tokens so a palette change updates the whole site.
+- PULSE Workspace (`/pulse/workspace`) parses and analyses uploaded spreadsheets entirely in the browser (`src/lib/pulse/*`, pure tested functions); only aggregated figures go to the AI server function, so client files are never uploaded or stored.
