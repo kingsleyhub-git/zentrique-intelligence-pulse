@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Mail, MapPin } from "lucide-react";
 import { PageHero } from "@/components/site/PageHero";
-import { company } from "@/lib/site";
+import { ContactSection } from "@/components/sections/ContactSection";
 import type { ContactIntent } from "@/lib/contact.schema";
 
 export const Route = createFileRoute("/contact")({
@@ -11,13 +10,17 @@ export const Route = createFileRoute("/contact")({
       : {},
   head: () => ({
     meta: [
-      { title: "Contact — ZENTRIQUE Intelligence" },
+      { title: "Contact ZENTRIQUE — Book a Consultation or Request a Demo" },
       {
         name: "description",
-        content: "Book a consultation or request a ZENTRIQUE PULSE demo.",
+        content:
+          "Book a consultation with ZENTRIQUE Intelligence or request a ZENTRIQUE PULSE demo. We reply within one business day.",
       },
-      { property: "og:title", content: "Contact — ZENTRIQUE Intelligence" },
-      { property: "og:description", content: "Let's turn your data into intelligence." },
+      { property: "og:title", content: "Contact ZENTRIQUE — Book a Consultation or Request a Demo" },
+      {
+        property: "og:description",
+        content: "Let's turn your data into intelligence. Book a consultation or request a PULSE demo.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -26,32 +29,18 @@ export const Route = createFileRoute("/contact")({
 });
 
 function ContactPage() {
+  const { intent } = Route.useSearch();
   return (
     <>
-      <PageHero eyebrow="Contact" title="Let's Turn Your Data Into Intelligence">
-        Book a consultation or request a demo of ZENTRIQUE PULSE.
+      <PageHero
+        eyebrow="Contact"
+        title={intent === "demo" ? "Request a ZENTRIQUE PULSE Demo" : "Book A Consultation"}
+      >
+        {intent === "demo"
+          ? "See how PULSE turns your business data into dashboards, forecasts and explainable recommendations."
+          : "Speak with a ZENTRIQUE specialist about your data, your decisions and where intelligence can make the biggest difference."}
       </PageHero>
-      <section className="bg-background py-20">
-        <div className="mx-auto grid max-w-7xl gap-6 px-6 sm:grid-cols-2 lg:px-8">
-          <a
-            href={`mailto:${company.email}`}
-            className="flex items-center gap-4 rounded-2xl border border-border bg-soft-grey p-6"
-          >
-            <Mail className="size-6 text-brand-blue" aria-hidden="true" />
-            <span>
-              <span className="block text-sm text-muted-foreground">Business email</span>
-              <span className="font-semibold text-charcoal">{company.email}</span>
-            </span>
-          </a>
-          <div className="flex items-center gap-4 rounded-2xl border border-border bg-soft-grey p-6">
-            <MapPin className="size-6 text-brand-blue" aria-hidden="true" />
-            <span>
-              <span className="block text-sm text-muted-foreground">Office location</span>
-              <span className="font-semibold text-charcoal">{company.location}</span>
-            </span>
-          </div>
-        </div>
-      </section>
+      <ContactSection key={intent ?? "default"} initialIntent={intent} />
     </>
   );
 }

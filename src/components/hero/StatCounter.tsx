@@ -48,7 +48,7 @@ export function StatCounter({ value, suffix = "", label, duration = 1800, size =
       <span
         className={
           size === "lg"
-            ? "font-display text-5xl font-bold tabular-nums text-hero-foreground sm:text-6xl"
+            ? "font-display text-4xl font-bold tabular-nums text-hero-foreground sm:text-5xl xl:text-6xl"
             : "font-display text-3xl font-bold tabular-nums text-hero-foreground sm:text-4xl"
         }
       >
