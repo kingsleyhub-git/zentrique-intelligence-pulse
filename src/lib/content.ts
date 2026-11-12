@@ -13,7 +13,6 @@ import {
   Lightbulb,
   Package,
   Server,
-  ShieldCheck,
   Store,
   TrendingUp,
   Upload,
@@ -114,8 +113,4 @@ export const techStack: TechGroup[] = [
   { icon: ChartColumnIncreasing, title: "Analytics", items: ["Pandas", "Plotly"] },
   { icon: Cpu, title: "Machine Learning", items: ["Scikit-Learn", "TensorFlow", "PyTorch"] },
   { icon: Cloud, title: "Hosting", items: ["Vercel", "Cloud Infrastructure"] },
-];
-
-export const securityPoints: Feature[] = [
-  { icon: ShieldCheck, title: "Secure by design", description: "Encrypted storage and strict client data separation." },
 ];
