@@ -15,10 +15,14 @@ export async function parseSpreadsheet(file: File): Promise<ParsedWorkbook> {
     throw new Error(`This file is larger than ${MAX_FILE_MB} MB. Please split it or remove unused columns.`);
   }
   const XLSX = await import("xlsx");
-  const buf = await file.arrayBuffer();
+  const isText = /\.(csv|txt|tsv)$/i.test(file.name) || file.type.startsWith("text/");
   let wb;
   try {
-    wb = XLSX.read(buf, { type: "array", cellDates: true, dense: true });
+    // Text files are read without type guessing so day-first dates like 05/01/2026 aren't
+    // silently converted as US dates; PULSE's own parser decides the date order per column.
+    wb = isText
+      ? XLSX.read(await file.text(), { type: "string", raw: true, dense: true })
+      : XLSX.read(await file.arrayBuffer(), { type: "array", cellDates: true, dense: true });
   } catch {
     throw new Error("We couldn't read this file. Please upload a CSV, XLSX or XLS spreadsheet.");
   }
