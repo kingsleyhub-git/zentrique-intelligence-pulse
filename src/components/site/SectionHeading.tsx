@@ -8,6 +8,7 @@ export function SectionHeading({
   children,
   align = "center",
   tone = "dark",
+  as: Heading = "h2",
 }: {
   id?: string | undefined;
   eyebrow: string;
@@ -15,6 +16,8 @@ export function SectionHeading({
   children?: ReactNode;
   align?: "center" | "left";
   tone?: "dark" | "light";
+  /** Use "h1" when the heading is the page's main title. */
+  as?: "h1" | "h2";
 }) {
   return (
     <div className={cn("max-w-3xl", align === "center" && "mx-auto text-center")}>
@@ -26,7 +29,7 @@ export function SectionHeading({
         <span className="h-px w-6 bg-brand-teal" />
         {eyebrow}
       </span>
-      <h2
+      <Heading
         id={id}
         className={cn(
           "mt-4 text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl",
@@ -34,7 +37,7 @@ export function SectionHeading({
         )}
       >
         {title}
-      </h2>
+      </Heading>
       {children && (
         <p
           className={cn(

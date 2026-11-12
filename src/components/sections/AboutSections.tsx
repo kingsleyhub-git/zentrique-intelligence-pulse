@@ -13,6 +13,7 @@ export function AboutIntro() {
       <div className="mx-auto grid max-w-7xl items-center gap-14 px-6 lg:grid-cols-[1.4fr_1fr] lg:px-8">
         <Reveal>
           <SectionHeading
+            as="h1"
             eyebrow="About ZENTRIQUE"
             align="left"
             tone="light"
