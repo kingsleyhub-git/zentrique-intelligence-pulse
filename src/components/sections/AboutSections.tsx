@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { ArrowRight, Compass, Crosshair, Eye, Layers, Rocket, Sparkles } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
 import { SectionHeading } from "@/components/site/SectionHeading";
@@ -193,13 +194,13 @@ export function AboutTeaser() {
               </div>
             ))}
           </div>
-          <a
-            href="/about"
+          <Link
+            to="/about"
             className="group mt-6 inline-flex items-center gap-2 font-semibold text-brand-blue"
           >
             Discover our story
             <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-          </a>
+          </Link>
         </Reveal>
       </div>
     </section>
