@@ -57,7 +57,7 @@ export function SiteFooter() {
           <ul className="mt-4 space-y-3 text-sm">
             {services.map((s) => (
               <li key={s.slug}>
-                <Link to="/services" hash={s.slug} className="transition-colors hover:text-hero-foreground">
+                <Link to="/services/$slug" params={{ slug: s.slug }} className="transition-colors hover:text-hero-foreground">
                   {s.title}
                 </Link>
               </li>
