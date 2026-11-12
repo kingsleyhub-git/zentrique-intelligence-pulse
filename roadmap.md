@@ -12,3 +12,6 @@
 - [x] Production readiness: every button/link works, nav, footer, SEO, accessibility, mobile, form end-to-end
 - [ ] Waiting on user: real business email, office address, social media links
 - [x] Functional PULSE Workspace: real CSV/Excel upload, column mapping, validation, KPIs, charts, forecasting, AI strategic insights, Excel/CSV/PDF reports
+
+- [ ] Corrections doc (Nov 2026): remove zero counters, label hero dashboard as sample, fix privacy wording, pillars vs services, fix left-edge clipping, hero copy, About heading, pillar cards + links, new service descriptions + service detail pages, PULSE section copy/buttons, industries problem/solution/deliverables, six Why-choose principles, expanded enquiry form, PULSE unit-cost maths + error handling
+- [ ] Waiting on user: email notification of new enquiries (needs a sending email domain)

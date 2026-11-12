@@ -16,6 +16,7 @@ import { Route as IndustriesRouteImport } from './routes/industries'
 import { Route as PulseRouteImport } from './routes/pulse'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as PulseWorkspaceRouteImport } from './routes/pulse_.workspace'
+import { Route as ServicesSlugRouteImport } from './routes/services_.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -52,6 +53,11 @@ const PulseWorkspaceRoute = PulseWorkspaceRouteImport.update({
   path: '/pulse/workspace',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesSlugRoute = ServicesSlugRouteImport.update({
+  id: '/services_/$slug',
+  path: '/services/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -61,6 +67,7 @@ export interface FileRoutesByFullPath {
   '/pulse': typeof PulseRoute
   '/services': typeof ServicesRoute
   '/pulse/workspace': typeof PulseWorkspaceRoute
+  '/services/$slug': typeof ServicesSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -70,6 +77,7 @@ export interface FileRoutesByTo {
   '/pulse': typeof PulseRoute
   '/services': typeof ServicesRoute
   '/pulse/workspace': typeof PulseWorkspaceRoute
+  '/services/$slug': typeof ServicesSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -80,6 +88,7 @@ export interface FileRoutesById {
   '/pulse': typeof PulseRoute
   '/services': typeof ServicesRoute
   '/pulse_/workspace': typeof PulseWorkspaceRoute
+  '/services_/$slug': typeof ServicesSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -91,6 +100,7 @@ export interface FileRouteTypes {
     | '/pulse'
     | '/services'
     | '/pulse/workspace'
+    | '/services/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -100,6 +110,7 @@ export interface FileRouteTypes {
     | '/pulse'
     | '/services'
     | '/pulse/workspace'
+    | '/services/$slug'
   id:
     | '__root__'
     | '/'
@@ -109,6 +120,7 @@ export interface FileRouteTypes {
     | '/pulse'
     | '/services'
     | '/pulse_/workspace'
+    | '/services_/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -119,6 +131,7 @@ export interface RootRouteChildren {
   PulseRoute: typeof PulseRoute
   ServicesRoute: typeof ServicesRoute
   PulseWorkspaceRoute: typeof PulseWorkspaceRoute
+  ServicesSlugRoute: typeof ServicesSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -172,6 +185,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PulseWorkspaceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services_/$slug': {
+      id: '/services_/$slug'
+      path: '/services/$slug'
+      fullPath: '/services/$slug'
+      preLoaderRoute: typeof ServicesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -183,6 +203,7 @@ const rootRouteChildren: RootRouteChildren = {
   PulseRoute: PulseRoute,
   ServicesRoute: ServicesRoute,
   PulseWorkspaceRoute: PulseWorkspaceRoute,
+  ServicesSlugRoute: ServicesSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

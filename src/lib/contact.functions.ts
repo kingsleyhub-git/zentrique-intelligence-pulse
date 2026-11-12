@@ -28,6 +28,9 @@ export const submitContact = createServerFn({ method: "POST" })
       email: data.email,
       company: data.company ?? null,
       phone: data.phone ?? null,
+      industry: data.industry,
+      service_interest: data.intent === "demo" ? (data.service ?? "pulse") : (data.service ?? null),
+      preferred_contact: data.preferredContact ?? null,
       message: data.message,
     });
 

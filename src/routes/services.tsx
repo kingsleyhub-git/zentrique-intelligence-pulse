@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
-import { ServiceDetails, ServicesSection } from "@/components/sections/ServicesSection";
+import { ServicesSection } from "@/components/sections/ServicesSection";
 import { CtaBand } from "@/components/sections/CtaBand";
 
 export const Route = createFileRoute("/services")({
@@ -31,7 +31,6 @@ function ServicesPage() {
         Data, analytics and AI services that help organizations make smarter and faster decisions.
       </PageHero>
       <ServicesSection />
-      <ServiceDetails />
       <CtaBand />
     </>
   );
