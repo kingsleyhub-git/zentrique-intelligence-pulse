@@ -419,3 +419,62 @@
     opacity: 1;
   }
 }
+
+@utility industry-card {
+  overflow: hidden;
+  border-radius: calc(var(--radius) + 8px);
+  border: 1px solid var(--border);
+  background: var(--card);
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.45s ease,
+    border-color 0.45s ease;
+
+  &:hover {
+    transform: translateY(-6px);
+    border-color: oklch(0.587 0.187 257.8 / 0.35);
+    box-shadow: 0 28px 50px -24px oklch(0.587 0.187 257.8 / 0.45);
+  }
+}
+
+@utility industry-card-shade {
+  background: linear-gradient(180deg, oklch(0.18 0.045 262 / 0.1) 0%, oklch(0.18 0.045 262 / 0.55) 100%);
+}
+
+@utility tech-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--soft-grey);
+  padding: 0.45rem 0.9rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--charcoal);
+  transition:
+    border-color 0.3s ease,
+    background 0.3s ease;
+
+  &:hover {
+    border-color: oklch(0.587 0.187 257.8 / 0.4);
+    background: var(--card);
+  }
+}
+
+@utility skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 100;
+  border-radius: 0.5rem;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  padding: 0.75rem 1.25rem;
+  font-weight: 600;
+  transition: top 0.2s ease;
+
+  &:focus {
+    top: 1rem;
+  }
+}

@@ -18,7 +18,7 @@ const screenNotes: Record<PulseView, string> = {
   reports: "Board-ready PDF and Excel exports",
 };
 
-export function PulseShowcase({ headingLevel = "h2" }: { headingLevel?: "h2" }) {
+export function PulseShowcase() {
   const [view, setView] = useState<PulseView>("overview");
   const dashRef = useRef<HTMLDivElement>(null);
 
@@ -31,7 +31,6 @@ export function PulseShowcase({ headingLevel = "h2" }: { headingLevel?: "h2" }) 
     <section
       id="pulse"
       aria-labelledby="pulse-title"
-      data-heading={headingLevel}
       className="relative isolate scroll-mt-20 overflow-hidden bg-hero py-24 text-hero-foreground lg:py-32"
     >
       <div className="hero-grid absolute inset-0 -z-10" />
