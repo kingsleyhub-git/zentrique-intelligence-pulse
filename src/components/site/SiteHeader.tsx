@@ -26,7 +26,7 @@ export function SiteHeader() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-500",
         scrolled || open
-          ? "border-b border-hero-line bg-glass-strong backdrop-blur-xl"
+          ? "border-b border-hero-line bg-navy/90 shadow-lg backdrop-blur-xl"
           : "bg-transparent",
       )}
     >

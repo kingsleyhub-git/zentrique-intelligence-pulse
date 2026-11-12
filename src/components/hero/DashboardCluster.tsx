@@ -56,10 +56,6 @@ export function DashboardCluster() {
               PULSE · Revenue Intelligence
             </span>
           </div>
-          <div className="flex gap-1 text-[0.65rem] font-medium">
-            <span className="rounded-md bg-glass-strong px-2 py-1 text-hero-foreground">12M</span>
-            <span className="px-2 py-1 text-hero-muted">YTD</span>
-          </div>
         </div>
         <div className="mt-4 flex items-end gap-3">
           <span className="font-display text-3xl font-bold text-hero-foreground">KES 4.82M</span>
@@ -145,10 +141,10 @@ export function DashboardCluster() {
         </span>
         <div className="mt-3 flex h-20 items-end justify-between gap-2">
           {bars.map((b, i) => (
-            <div key={b.label} className="flex flex-1 flex-col items-center gap-1">
+            <div key={b.label} className="flex h-full flex-1 flex-col items-center justify-end gap-1">
               <div
                 className="animate-grow w-full rounded-t-md bg-gradient-brand"
-                style={{ height: `${b.v}%`, animationDelay: `${0.8 + i * 0.12}s` }}
+                style={{ height: `${b.v * 0.8}%`, animationDelay: `${0.8 + i * 0.12}s` }}
               />
               <span className="text-[0.6rem] text-hero-muted">{b.label}</span>
             </div>
