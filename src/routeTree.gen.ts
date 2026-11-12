@@ -15,6 +15,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as IndustriesRouteImport } from './routes/industries'
 import { Route as PulseRouteImport } from './routes/pulse'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as PulseWorkspaceRouteImport } from './routes/pulse_.workspace'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -46,6 +47,11 @@ const ServicesRoute = ServicesRouteImport.update({
   path: '/services',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PulseWorkspaceRoute = PulseWorkspaceRouteImport.update({
+  id: '/pulse_/workspace',
+  path: '/pulse/workspace',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -54,6 +60,7 @@ export interface FileRoutesByFullPath {
   '/industries': typeof IndustriesRoute
   '/pulse': typeof PulseRoute
   '/services': typeof ServicesRoute
+  '/pulse/workspace': typeof PulseWorkspaceRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -62,6 +69,7 @@ export interface FileRoutesByTo {
   '/industries': typeof IndustriesRoute
   '/pulse': typeof PulseRoute
   '/services': typeof ServicesRoute
+  '/pulse/workspace': typeof PulseWorkspaceRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -71,13 +79,27 @@ export interface FileRoutesById {
   '/industries': typeof IndustriesRoute
   '/pulse': typeof PulseRoute
   '/services': typeof ServicesRoute
+  '/pulse_/workspace': typeof PulseWorkspaceRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/about' | '/contact' | '/industries' | '/pulse' | '/services'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/industries'
+    | '/pulse'
+    | '/services'
+    | '/pulse/workspace'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact' | '/industries' | '/pulse' | '/services'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/industries'
+    | '/pulse'
+    | '/services'
+    | '/pulse/workspace'
   id:
     | '__root__'
     | '/'
@@ -86,6 +108,7 @@ export interface FileRouteTypes {
     | '/industries'
     | '/pulse'
     | '/services'
+    | '/pulse_/workspace'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -95,6 +118,7 @@ export interface RootRouteChildren {
   IndustriesRoute: typeof IndustriesRoute
   PulseRoute: typeof PulseRoute
   ServicesRoute: typeof ServicesRoute
+  PulseWorkspaceRoute: typeof PulseWorkspaceRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -141,6 +165,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/pulse_/workspace': {
+      id: '/pulse_/workspace'
+      path: '/pulse/workspace'
+      fullPath: '/pulse/workspace'
+      preLoaderRoute: typeof PulseWorkspaceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -151,6 +182,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndustriesRoute: IndustriesRoute,
   PulseRoute: PulseRoute,
   ServicesRoute: ServicesRoute,
+  PulseWorkspaceRoute: PulseWorkspaceRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
