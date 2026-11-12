@@ -36,7 +36,7 @@ export function SiteHeader() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-500",
+        "fixed inset-x-0 top-0 z-50 transition-all duration-500 print:hidden",
         open
           ? "border-b border-hero-line bg-navy-deep shadow-lg"
           : scrolled

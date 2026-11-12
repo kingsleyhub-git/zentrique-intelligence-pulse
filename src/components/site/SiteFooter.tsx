@@ -7,7 +7,7 @@ import { Logo } from "./Logo";
 export function SiteFooter() {
   const year = new Date().getFullYear();
   return (
-    <footer className="border-t border-hero-line bg-navy-deep text-hero-muted">
+    <footer className="border-t border-hero-line bg-navy-deep text-hero-muted print:hidden">
       <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1.2fr_1.2fr] lg:px-8">
         <div>
           <Link to="/" aria-label="ZENTRIQUE Intelligence home" className="inline-block">

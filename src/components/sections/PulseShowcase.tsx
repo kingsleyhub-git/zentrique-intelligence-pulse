@@ -57,6 +57,12 @@ export function PulseShowcase() {
           <div ref={dashRef} className="scroll-mt-28">
             <PulseDashboard view={view} onViewChange={setView} />
           </div>
+          <p className="mt-4 text-center text-sm text-hero-muted">
+            Preview shown with sample figures.{" "}
+            <Link to="/pulse/workspace" className="font-semibold text-brand-teal underline-offset-4 hover:underline">
+              Open the live workspace and analyse your own data →
+            </Link>
+          </p>
         </Reveal>
 
         {/* Product screenshots: each card opens that screen in the live preview above */}
@@ -117,20 +123,21 @@ export function PulseShowcase() {
             <div className="flex items-start gap-4">
               <Lock className="mt-1 size-5 shrink-0 text-brand-teal" aria-hidden="true" />
               <p className="max-w-xl text-hero-muted">
-                <span className="font-semibold text-hero-foreground">See PULSE with your own data.</span>{" "}
-                We'll walk you through a private demo using a sample of your business records.
+                <span className="font-semibold text-hero-foreground">Try PULSE with your own data — free.</span>{" "}
+                Upload a sales spreadsheet and get live KPIs, forecasts and AI recommendations in minutes, or
+                book a guided demo with our team.
               </p>
             </div>
             <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
               <Button asChild variant="hero" size="xl" className="group">
-                <Link to="/contact" search={{ intent: "demo" }}>
-                  Request Demo
+                <Link to="/pulse/workspace">
+                  Launch PULSE Workspace
                   <ArrowRight className="transition-transform group-hover:translate-x-1" />
                 </Link>
               </Button>
               <Button asChild variant="heroOutline" size="xl">
-                <Link to="/contact" search={{ intent: "consultation" }}>
-                  Book A Consultation
+                <Link to="/contact" search={{ intent: "demo" }}>
+                  Request Demo
                 </Link>
               </Button>
             </div>

@@ -479,3 +479,9 @@
     top: 1rem;
   }
 }
+
+@media print {
+  [data-sonner-toaster] {
+    display: none !important;
+  }
+}
