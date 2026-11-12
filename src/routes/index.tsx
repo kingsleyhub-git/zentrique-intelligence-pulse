@@ -36,9 +36,9 @@ function Index() {
     <>
       <Hero />
       <AboutTeaser />
+      <PillarsSection />
       <ServicesSection />
       <PulseShowcase />
-      <PillarsSection />
       <IndustriesSection />
       <WhyChooseSection />
       <TechStackSection />
