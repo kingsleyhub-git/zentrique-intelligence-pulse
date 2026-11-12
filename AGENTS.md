@@ -28,3 +28,7 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+- Site chrome (header/footer) lives in `src/routes/__root.tsx`; page sections are reusable components in `src/components/sections` so a section can appear on several pages without duplication.
+- Brand colours, gradients and card styles are tokens/utilities in `src/styles.css`; components only use those tokens so a palette change updates the whole site.
