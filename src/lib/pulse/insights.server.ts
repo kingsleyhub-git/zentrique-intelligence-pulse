@@ -88,7 +88,7 @@ export async function generatePulseInsights(
       instructions: INSTRUCTIONS,
       messages: [{ role: "user", content: buildPrompt(input) }],
       output: Output.object({ schema: insightsSchema }),
-      abortSignal: signal,
+      ...(signal ? { abortSignal: signal } : {}),
       providerOptions: {
         openai: {
           forceReasoning: true,
